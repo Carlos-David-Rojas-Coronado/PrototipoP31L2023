@@ -1,0 +1,12 @@
+CREATE SCHEMA IF NOT EXISTS `Laboratorio1p` DEFAULT CHARACTER SET utf8 ;
+USE `proyectop312023`;
+
+DROP DATABASE sic;
+CREATE DATABASE sic;
+USE sic;
+CREATE TABLE IF NOT EXISTS lineas
+(
+    codigo_linea VARCHAR(5) PRIMARY KEY,
+    nombre_linea VARCHAR(60),
+    estatus_linea VARCHAR(1)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
