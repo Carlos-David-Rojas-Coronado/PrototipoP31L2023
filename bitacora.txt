@@ -1,0 +1,17 @@
+commit eeb844e5070bb7c2208cda3e8e31599dc984b6d0
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Wed Mar 8 11:55:01 2023 -0600
+
+    finalizacion de correccion
+
+commit 7a56a2e86245ab4197cd278ec3a222ef2846ac45
+Author: Carlos-David-Rojas-Coronado <crojasc3@miumg.edu.gt>
+Date:   Wed Mar 8 11:36:33 2023 -0600
+
+    nueva tabla Lineas
+
+commit 2fbe2c51083ebaaf68a34cc6bac6f5d3ade187cb
+Author: Carlos-David-Rojas-Coronado <98106798+Carlos-David-Rojas-Coronado@users.noreply.github.com>
+Date:   Wed Mar 8 10:50:30 2023 -0600
+
+    Initial commit
