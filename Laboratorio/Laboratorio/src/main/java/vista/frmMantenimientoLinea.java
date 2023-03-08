@@ -37,13 +37,13 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
         modelo.addColumn("estatus");
         clsLinea marca = new clsLinea();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsLinea> listaMarcas = marca.getListadoMarcas();
-        tablaMarcas.setModel(modelo);
+        List<clsLinea> listaLineas = marca.getListadoLineas();
+        tablaLineas.setModel(modelo);
         String[] dato = new String[3];
-        for (int i = 0; i < listaMarcas.size(); i++) {
-            dato[0] = Integer.toString(listaMarcas.get(i).getIdMarca());
-            dato[1] = listaMarcas.get(i).getNombreMarca();
-            dato[2] = listaMarcas.get(i).getEstatusMarca();
+        for (int i = 0; i < listaLineas.size(); i++) {
+            dato[0] = Integer.toString(listaLineas.get(i).getIdLinea());
+            dato[1] = listaLineas.get(i).getNombreLinea();
+            dato[2] = listaLineas.get(i).getEstatusLinea();
             modelo.addRow(dato);
         }       
     }
@@ -69,7 +69,7 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaMarcas = new javax.swing.JTable();
+        tablaLineas = new javax.swing.JTable();
         txtEstatus = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
@@ -109,7 +109,7 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Marcas");
+        label1.setText("Lineas");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,8 +131,8 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
             }
         });
 
-        tablaMarcas.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        tablaMarcas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaLineas.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        tablaLineas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -148,7 +148,7 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tablaMarcas);
+        jScrollPane1.setViewportView(tablaLineas);
 
         txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
@@ -226,7 +226,7 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 596, Short.MAX_VALUE))
+                        .addGap(294, 604, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -275,9 +275,9 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsLinea marca = new clsLinea();
-        marca.setIdMarca(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=marca.setBorrarMarcas(marca);
+        clsLinea linea = new clsLinea();
+        linea.setIdLinea(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados=linea.setBorrarLineas(linea);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -285,10 +285,10 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsLinea marca = new clsLinea();
-        marca.setNombreMarca(txtNombre.getText());
-        marca.setEstatusMarca(txtEstatus.getText());
-        marca.setIngresarMarcas(marca);
+        clsLinea linea = new clsLinea();
+        linea.setNombreLinea(txtNombre.getText());
+        linea.setEstatusLinea(txtEstatus.getText());
+        linea.setIngresarLineas(linea);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -297,22 +297,22 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        clsLinea marca = new clsLinea();
-        //usuario.setNombreMarca(txtbuscado.getText());        
-        marca.setIdMarca(Integer.parseInt(txtbuscado.getText()));        
-        marca = marca.getBuscarInformacionMarcasPorId(marca);
-        System.out.println("Usuario retornado:" + marca);        
-        txtNombre.setText(marca.getNombreMarca());
-        txtEstatus.setText(marca.getEstatusMarca());
+        clsLinea linea = new clsLinea();
+        //usuario.setNombreLinea(txtbuscado.getText());        
+        linea.setIdLinea(Integer.parseInt(txtbuscado.getText()));        
+        linea = linea.getBuscarInformacionLineasPorId(linea);
+        System.out.println("Usuario retornado:" + linea);        
+        txtNombre.setText(linea.getNombreLinea());
+        txtEstatus.setText(linea.getEstatusLinea());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        clsLinea marca = new clsLinea();
-        marca.setIdMarca(Integer.parseInt(txtbuscado.getText()));
-        marca.setNombreMarca(txtNombre.getText());
-        marca.setEstatusMarca(txtEstatus.getText());
-        marca.setModificarMarca(marca);
+        clsLinea linea = new clsLinea();
+        linea.setIdLinea(Integer.parseInt(txtbuscado.getText()));
+        linea.setNombreLinea(txtNombre.getText());
+        linea.setEstatusLinea(txtEstatus.getText());
+        linea.setModificarLinea(linea);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
@@ -386,7 +386,7 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb;
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
-    private javax.swing.JTable tablaMarcas;
+    private javax.swing.JTable tablaLineas;
     private javax.swing.JTextField txtEstatus;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtbuscado;
