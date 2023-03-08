@@ -35,15 +35,15 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
         modelo.addColumn("ID");
         modelo.addColumn("nombre");
         modelo.addColumn("estatus");
-        clsLinea marca = new clsLinea();
+        clsLinea linea = new clsLinea();
         //VendedorDAO vendedorDAO = new VendedorDAO();
-        List<clsLinea> listaMarcas = marca.getListadoMarcas();
+        List<clsLinea> listaLineas = linea.getListadoLineas();
         tablaMarcas.setModel(modelo);
         String[] dato = new String[3];
-        for (int i = 0; i < listaMarcas.size(); i++) {
-            dato[0] = Integer.toString(listaMarcas.get(i).getIdMarca());
-            dato[1] = listaMarcas.get(i).getNombreMarca();
-            dato[2] = listaMarcas.get(i).getEstatusMarca();
+        for (int i = 0; i < listaLineas.size(); i++) {
+            dato[0] = Integer.toString(listaLineas.get(i).getIdLinea());
+            dato[1] = listaLineas.get(i).getNombreLinea();
+            dato[2] = listaLineas.get(i).getEstatusLinea();
             modelo.addRow(dato);
         }       
     }
@@ -275,9 +275,9 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         int registrosBorrados=0;
-        clsLinea marca = new clsLinea();
-        marca.setIdMarca(Integer.parseInt(txtbuscado.getText()));
-        registrosBorrados=marca.setBorrarMarcas(marca);
+        clsLinea linea = new clsLinea();
+        linea.setIdLinea(Integer.parseInt(txtbuscado.getText()));
+        registrosBorrados=linea.setBorrarLineas(linea);
         JOptionPane.showMessageDialog(null, "Registro Borrado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -285,10 +285,10 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        clsLinea marca = new clsLinea();
-        marca.setNombreMarca(txtNombre.getText());
-        marca.setEstatusMarca(txtEstatus.getText());
-        marca.setIngresarMarcas(marca);
+        clsLinea linea = new clsLinea();
+        linea.setNombreLinea(txtNombre.getText());
+        linea.setEstatusLinea(txtEstatus.getText());
+        linea.setIngresarLineas(linea);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         llenadoDeTablas();
@@ -297,22 +297,22 @@ public class frmMantenimientoLinea extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-        clsLinea marca = new clsLinea();
-        //usuario.setNombreMarca(txtbuscado.getText());        
-        marca.setIdMarca(Integer.parseInt(txtbuscado.getText()));        
-        marca = marca.getBuscarInformacionMarcasPorId(marca);
-        System.out.println("Usuario retornado:" + marca);        
-        txtNombre.setText(marca.getNombreMarca());
-        txtEstatus.setText(marca.getEstatusMarca());
+        clsLinea linea = new clsLinea();
+        //linea.setNombreLinea(txtbuscado.getText());        
+        linea.setIdLinea(Integer.parseInt(txtbuscado.getText()));        
+        linea = linea.getBuscarInformacionLineasPorId(linea);
+        System.out.println("Usuario retornado:" + linea);        
+        txtNombre.setText(linea.getNombreLinea());
+        txtEstatus.setText(linea.getEstatusLinea());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
-        clsLinea marca = new clsLinea();
-        marca.setIdMarca(Integer.parseInt(txtbuscado.getText()));
-        marca.setNombreMarca(txtNombre.getText());
-        marca.setEstatusMarca(txtEstatus.getText());
-        marca.setModificarMarca(marca);
+        clsLinea linea = new clsLinea();
+        linea.setIdLinea(Integer.parseInt(txtbuscado.getText()));
+        linea.setNombreLinea(txtNombre.getText());
+        linea.setEstatusLinea(txtEstatus.getText());
+        linea.setModificarLinea(linea);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
         llenadoDeTablas();
